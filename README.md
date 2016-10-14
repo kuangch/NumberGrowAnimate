@@ -1,9 +1,9 @@
 # NumberGrowth
 一个可以模仿余额宝数子增长动画的框架
-*支持自动判断增长和减少
-*支持设置动画时间
-*支持设置开始增长数字
-*支持设置刷新频率
+* 支持自动判断增长和减少
+* 支持设置动画时间
+* 支持设置开始增长数字
+* 支持设置刷新频率
 
 ## 使用方法
 
@@ -31,7 +31,7 @@ var numberGrow = NumberGrowth('number-container',
 // 开始增长动画
 numberGrow.startGrow();
 
-// 改变数组动画
+// 改变数字动画
 numberGrow.changeNumber(1000);
 
 ```
@@ -48,4 +48,4 @@ numberGrow.changeNumber(1000);
 * changeNumber: 开始改变数字动画
 
 ## 效果
-![image](https://github.com/kuangch/ProgressStatus/blob/master/number-growth.gif)
+![image](https://github.com/kuangch/NumberGrowAnimate/blob/master/number-growth.gif)
