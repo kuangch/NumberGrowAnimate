@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+        .number {
+            position: absolute;
+            background-color: honeydew;
+            border: 1px solid goldenrod;
+            border-radius: 10px;
+            width: 300px;
+            height: 150px;
+            line-height: 150px;
+            top: 50%;
+            left: 50%;
+            margin-top: -75px;
+            margin-left: -100px;
+            color: goldenrod;
+            font-size: 50px;
+        }
+        .info {
+            position: absolute;
+            background-color: honeydew;
+            border: 2px solid gainsboro;
+            border-radius: 10px;
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            top: 50%;
+            left: 50%;
+            margin-top: 80px;
+            margin-left: -100px;
+            color: grey;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body style="background-color: gainsboro">
+<div id="number-container" class="number">0</div>
+<p id="info" class="info"></p>
+</body>
+<script type="text/javascript" src="number-growth.js"></script>
+<script>
+    var numberGrow = NumberGrowth('number-container',
+            500,
+            {
+                startNumber: 122,
+                growNumberAnimateTime:1000* 3
+            });
+    document.getElementById('info').innerHTML = 'From: ' + 122 + ' To: 200';
+    numberGrow.startGrow();
+
+    // test
+    setTimeout(function () {
+        document.getElementById('info').innerHTML = 'From: ' + parseInt(document.getElementById('number-container').innerHTML) + ' To: 200';
+        numberGrow.changeNumber(200);
+    },1000*5);
+    setTimeout(function(){
+        document.getElementById('info').innerHTML = 'From: ' + parseInt(document.getElementById('number-container').innerHTML) + ' To: 1000';
+        numberGrow.changeNumber(1000);
+    },1000*8);
+    setTimeout(function(){
+        document.getElementById('info').innerHTML = 'From: ' + parseInt(document.getElementById('number-container').innerHTML) + ' To: 600';
+        numberGrow.changeNumber(600);
+    },1000*9);
+    setTimeout(function(){
+        document.getElementById('info').innerHTML = 'From: ' + parseInt(document.getElementById('number-container').innerHTML) + ' To: 600';
+        numberGrow.changeNumber(600);
+    },1000*11)
+</script>
+</html>
