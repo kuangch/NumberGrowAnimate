@@ -16,6 +16,7 @@
 
         // default setting parameters
         var mSettings = {
+            showKiloCharacter: false,
             startNumber: 0,
             growNumberAnimateTime: 1000*3,
             changeNumberAnimateTime: 1000*2,
@@ -35,12 +36,44 @@
         var numberContainer = document.getElementById(arguments[0]);
         var initNumber = arguments[1];
 
+        function addKiloCharacter(str) {
+            var iNum = str.length%3;
+            var prev = '';
+            var arr = [];
+            var iNow = 0;
+            var tmp = '';
+            if(iNum !=0) {
+                prev = str.substring(0,iNum);
+                arr.push(prev);
+            }
+            str = str.substring(iNum);
+            for(var i=0;i<str.length;i++) {
+                iNow++;
+                tmp +=str[i];
+                if(iNow ==3 && tmp) {
+                    arr.push(tmp);
+                    tmp = '';
+                    iNow = 0;
+                }
+            }
+            return arr.join(',');
+        }
+
+        function removeKiloCharacter(str){
+            var ret = '';
+            var strs = str.split(',');
+            strs.forEach(function (item) {
+                ret += item;
+            });
+            return ret;
+        }
+
         var startGrow = function(){
             change2targetNumber(mSettings.startNumber, initNumber, mSettings.growNumberAnimateTime);
         };
 
         var changeNumber = function(number){
-            var currentNumber = parseInt(numberContainer.innerHTML);
+            var currentNumber = parseInt(mSettings.showKiloCharacter ? removeKiloCharacter(numberContainer.innerHTML) : numberContainer.innerHTML);
             change2targetNumber(currentNumber, number, mSettings.changeNumberAnimateTime);
         };
 
@@ -59,10 +92,10 @@
                 }
                 fromNumber += increaseNumber;
                 if(fromNumber > toNumber && isIncrease || fromNumber < toNumber && !isIncrease){
-                    numberContainer.innerHTML = toNumber;
+                    numberContainer.innerHTML = mSettings.showKiloCharacter ? addKiloCharacter(toNumber.toString()) : toNumber;
                     clearInterval(changeInterval);
                 }else{
-                    numberContainer.innerHTML = fromNumber;
+                    numberContainer.innerHTML = mSettings.showKiloCharacter ? addKiloCharacter(fromNumber.toString()): fromNumber;
                 }
 
             },mSettings.refreshTime)
