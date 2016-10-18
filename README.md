@@ -37,6 +37,7 @@ numberGrow.changeNumber(1000);
 ```
 ## 参数说明
 
+* showKiloCharacter 是否显示千字符
 * startNumber: 开始数字
 * growNumberAnimateTime: 初始数字增长动画时间（ms）
 * changeNumberAnimateTime: 改变数字动画时间（ms）
