@@ -7,7 +7,7 @@
         if (!arguments[0]) {
             throw new Error('please appoint div ID you want to append to');
         }
-        if (!arguments[1]) {
+        if (!arguments[1] && arguments[1] != 0) {
             throw new Error('please appoint number you want to show');
         }
         if (isNaN(arguments[1])){
